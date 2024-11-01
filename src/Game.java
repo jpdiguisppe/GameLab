@@ -5,11 +5,25 @@ public class Game {
 	
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
 	
+	public static Rooms currentRoom = World.buildWorld();
+	
+	public static Item getInventory(String a) {
+		for(Item c : inventory) {
+			if(c.toString().equals(a)) {
+				return(c);
+			}
+		}
+		return null;
+	}
+	
+	public static void print(Object obj) {
+		System.out.println(obj.toString());
+		}
+	
 	public static void main(String[] args) {
 		runGame();
 	}
 	public static void runGame() {
-		Rooms currentRoom = World.buildWorld();
 		Scanner input = new Scanner(System.in);
 		
 		String command; //players command
@@ -58,6 +72,32 @@ public class Game {
 					System.out.println("Item is not in current room or inventory.");
 				}
 				break;
+			case "use":
+				if(currentRoom.getItem(words[1])!=null) {
+					currentRoom.getItem(words[1]).use();
+				}
+				else {
+					if(getInventory(words[1]) == null) {
+						System.out.println("There is no such item.");
+					}
+					else {
+						getInventory(words[1]).use();
+					}
+				}
+				break;
+			case "open":
+				if(currentRoom.getItem(words[1])!=null) {
+					currentRoom.getItem(words[1]).open();
+				}
+				else {
+					if(getInventory(words[1]) == null) {
+						System.out.println("There is no such item.");
+					}
+					else {
+						getInventory(words[1]).open();
+					}
+				}
+				break;
 			case "i":
 				if(inventory.size()==0) {
 					System.out.println("You have nothing in your inventory.");
@@ -87,7 +127,7 @@ public class Game {
 		/*Rooms currentRooms = World.buildWorld();
 		System.out.println(currentRooms);
 		System.out.println("\nNow we'll move east!");
-		currentRooms = currentRooms.getExit('e');
+		currentRooms = currentRooms.getExitnull('e');
 		System.out.println(currentRooms);
 		System.out.println("\nNow we'll move down!");
 		currentRooms = currentRooms.getExit('d');

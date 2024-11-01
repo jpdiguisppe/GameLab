@@ -14,6 +14,8 @@ public class World {
 			Item suit = new Item("suit", "This is a black costume with a bat emblem on the chest");
 			Item cape = new Item("cape", "This is a heavy black cape");
 			Item milk = new Item("milk", "Just milk lol");
+			Combination combination = new Combination("combination", "This is the combination to the safe.");
+			Safe safe = new Safe("safe", "This is the safe.");
 			foyer.addExit(study, 'e');
 			study.addExit(foyer, 'w');
 			foyer.addExit(kitchen, 'w');
@@ -31,6 +33,8 @@ public class World {
 			kitchen.addItem("cape",cape);
 			kitchen.addItem("milk",milk); 
 			bedroom.addItem("suit",suit);
+			bedroom.addItem("combination", combination);
+			basement.addItem("safe", safe);
 			return foyer;
 	}
 
