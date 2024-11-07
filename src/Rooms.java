@@ -11,8 +11,24 @@ public class Rooms {
 		private Rooms west;
 		private Rooms up;
 		private Rooms down;
-		public Rooms(String n) {
-			description = n;
+		private boolean lock;
+		private String name;
+		public String getName() {
+			return name;
+		}
+		public void setName(String k) {
+			name = k;
+		}
+			
+		public boolean getLock() {
+			return lock;
+		}
+		public void setLock(boolean lock) {
+			this.lock = lock;
+		}
+		public Rooms(String d, String n) {
+			description = d;
+			name = n;
 		}
 		public Item getItem(String i) {
 			return item.get(i);

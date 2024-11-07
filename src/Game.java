@@ -41,8 +41,12 @@ public class Game {
 			case "u":
 			case "d":
 				Rooms nextRoom = currentRoom.getExit(command.charAt(0));
-				if(nextRoom == null)
+				if(nextRoom == null) {
 					System.out.println("You cant go that way.");
+				}
+				else if(nextRoom.getLock() == true) {
+					System.out.println("Room is Locked.");
+				}
 				else
 					currentRoom = nextRoom;
 				break;
@@ -68,8 +72,8 @@ public class Game {
 							System.out.println(y.getDescription());
 							break;
 						}
-					}
 					System.out.println("Item is not in current room or inventory.");
+					}
 				}
 				break;
 			case "use":
