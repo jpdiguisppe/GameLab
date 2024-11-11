@@ -9,7 +9,7 @@ public class World {
 			Rooms secondfloor = new Rooms("You are on the second floor.", "secondfloor");
 			Rooms bedroom = new Rooms("You are in the bedroom.", "bedroom");
 			Rooms basement = new Rooms("You are in the basement.", "basement");
-			Item keycard = new Item("keycard","This is the keycard");
+			Item note = new Item("keycard","This is the keycard");
 			Item batarang = new Item("batarang", "This is a batarang");
 			Item suit = new Item("suit", "This is a black costume with a bat emblem on the chest");
 			Item cape = new Item("cape", "This is a heavy black cape");
@@ -29,7 +29,7 @@ public class World {
 			bedroom.addExit(secondfloor,  's');
 			study.addExit(basement, 'd');
 			basement.addExit(study,  'u');
-			study.addItem("keycard",keycard);
+			study.addItem("note",note);
 			kitchen.addItem("batarang",batarang);
 			kitchen.addItem("cape",cape);
 			kitchen.addItem("milk",milk); 

@@ -66,13 +66,17 @@ public class Game {
 				if(currentRoom.getItem(words[1])!=null) {
 					System.out.println(currentRoom.getItem(words[1]).getDescription());
 				}
-				else if(currentRoom.getItem(words[1])==null) {
-					for(Item y : inventory) {
-						if(y.getName().equals(words[1])) {
-							System.out.println(y.getDescription());
+				else { 
+					boolean found = false;
+					for(Item l : inventory) {
+						if(l.getName().equals(words[1])) {
+							System.out.println(l.getDescription());
+							found = true;
 							break;
 						}
-					System.out.println("Item is not in current room or inventory.");
+					}
+					if(found==false) {
+						System.out.println("This item is not in this room or inventory.");
 					}
 				}
 				break;
