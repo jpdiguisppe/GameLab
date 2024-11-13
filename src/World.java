@@ -1,4 +1,5 @@
 public class World {
+
 	// Builds the game world.
 	// Returns the room the player starts in.
 	public static Rooms buildWorld() {
@@ -9,7 +10,7 @@ public class World {
 			Rooms secondfloor = new Rooms("You are on the second floor.", "secondfloor");
 			Rooms bedroom = new Rooms("You are in the bedroom.", "bedroom");
 			Rooms basement = new Rooms("You are in the basement.", "basement");
-			Item note = new Item("keycard","This is the keycard");
+			Item note = new Item("keycard","This is a halfwritten note, abandoned.");
 			Item batarang = new Item("batarang", "This is a batarang");
 			Item suit = new Item("suit", "This is a black costume with a bat emblem on the chest");
 			Item cape = new Item("cape", "This is a heavy black cape");
@@ -17,6 +18,9 @@ public class World {
 			Item key = new Key("key", "This is the key to the locked room");
 			Combination combination = new Combination("combination", "This is the combination to the safe.");
 			Safe safe = new Safe("safe", "This is the safe.");
+			AudioRecorder audiorecorder = new AudioRecorder("audiorecorder", "This is a device with a store message.");
+			TransportGate transportgate = new TransportGate("transportgate", "This will transport you back to the foyer.");
+			Closet closet = new Closet("closet", "This is a closet, perhaps something is inside.");
 			foyer.addExit(study, 'e');
 			study.addExit(foyer, 'w');
 			foyer.addExit(kitchen, 'w');
@@ -38,6 +42,9 @@ public class World {
 			basement.addItem("safe", safe);
 			bathroom.addItem("key", key);
 			basement.setLock(true);
+			foyer.addItem("audiorecorder", audiorecorder);
+			basement.addItem("closet", closet);
+			secondfloor.addItem("transportgate", transportgate);
 			return foyer;
 	}
 
