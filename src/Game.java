@@ -5,6 +5,14 @@ import java.io.*;
 
 public class Game {
 	
+	public static void main(String[] args) {
+		setMap();
+		ui = new Interface();
+		print(currentRoom);
+	}
+	
+	private static Interface ui; 
+			
 	public static Scanner input = new Scanner(System.in);
 	
 	public static HashMap<String, String> roomfile = new HashMap<String, String>();
@@ -78,19 +86,11 @@ public class Game {
 	
 	public static void print(Object obj) {
 		System.out.println(obj.toString());
+		ui.textarea.append(obj.toString()+"\n");
 		}
 	
-	public static void main(String[] args) {
-		setMap();
-		runGame();
-	}
-	public static void runGame() {
+	public static void processCommand(String command) {
 		
-		String command; //players command
-		do {
-			System.out.println(currentRoom);
-			System.out.print("Where do you want to go? ");
-			command = input.nextLine();
 			String[] words = command.split(" ");
 			
 			switch(words[0]) {
@@ -109,6 +109,7 @@ public class Game {
 				}
 				else
 					currentRoom = nextRoom;
+					Game.print(currentRoom);
 				break;
 			case "take":
 				System.out.println("You are trying to take the " + words[1]+".");
@@ -194,11 +195,6 @@ public class Game {
 				System.out.println("I dont know what that means. ");
 				break;
 			}
-			
-		}while(!command.equals("x"));
-		
-		
-		input.close();
 	}
 	
 		/*Rooms currentRooms = World.buildWorld();
