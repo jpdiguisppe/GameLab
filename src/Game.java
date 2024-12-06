@@ -30,7 +30,7 @@ public class Game {
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found!!!");
+			Game.print("File not found!!!");
 		}
 	}
 	
@@ -46,9 +46,9 @@ public class Game {
 			stream.writeObject(roomMap);
 			stream.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File "+saveload+" not found.");
+			Game.print("File "+saveload+" not found.");
 		} catch (IOException ex) {
-			System.out.println("Bummers, man");
+			Game.print("Bummers, man");
 		}
 	}
 	
@@ -62,12 +62,12 @@ public class Game {
 			currentRoom = (Rooms) stream.readObject();
 			stream.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File "+saveload+" not found.");
+			Game.print("File "+saveload+" not found.");
 			System.exit(0);
 		} catch (IOException ex) {
-			System.out.println("Bummers, man");
+			Game.print("Bummers, man");
 		} catch (ClassNotFoundException ex) {
-			System.out.println("Not an object.");
+			Game.print("Not an object.");
 		}
 	}
 	
@@ -85,7 +85,6 @@ public class Game {
 	}
 	
 	public static void print(Object obj) {
-		System.out.println(obj.toString());
 		ui.textarea.append(obj.toString()+"\n");
 		}
 	
@@ -102,42 +101,42 @@ public class Game {
 			case "d":
 				Rooms nextRoom = currentRoom.getExit(command.charAt(0));
 				if(nextRoom == null) {
-					System.out.println("You cant go that way.");
+					Game.print("You cant go that way.");
 				}
 				else if(nextRoom.getLock() == true) {
-					System.out.println("Room is Locked.");
+					Game.print("Room is Locked.");
 				}
 				else
 					currentRoom = nextRoom;
 					Game.print(currentRoom);
 				break;
 			case "take":
-				System.out.println("You are trying to take the " + words[1]+".");
+				Game.print("You are trying to take the " + words[1]+".");
 				Item i = currentRoom.getItem(words[1]);
 				if(i == null) {
-					System.out.println("No item found.");
+					Game.print("No item found.");
 				}
 				else {
 					currentRoom.addItem(null, null);
 					inventory.add(i);
-					System.out.println("You now posses " + i.getName());
+					Game.print("You now posses " + i.getName());
 				}
 				break;
 			case "look":
 				if(currentRoom.getItem(words[1])!=null) {
-					System.out.println(currentRoom.getItem(words[1]).getDescription());
+					Game.print(currentRoom.getItem(words[1]).getDescription());
 				}
 				else { 
 					boolean found = false;
 					for(Item l : inventory) {
 						if(l.getName().equals(words[1])) {
-							System.out.println(l.getDescription());
+							Game.print(l.getDescription());
 							found = true;
 							break;
 						}
 					}
 					if(found==false) {
-						System.out.println("This item is not in this room or inventory.");
+						Game.print("This item is not in this room or inventory.");
 					}
 				}
 				break;
@@ -147,7 +146,7 @@ public class Game {
 				}
 				else {
 					if(getInventory(words[1]) == null) {
-						System.out.println("There is no such item.");
+						Game.print("There is no such item.");
 					}
 					else {
 						getInventory(words[1]).use();
@@ -160,7 +159,7 @@ public class Game {
 				}
 				else {
 					if(getInventory(words[1]) == null) {
-						System.out.println("There is no such item.");
+						Game.print("There is no such item.");
 					}
 					else {
 						getInventory(words[1]).open();
@@ -169,13 +168,13 @@ public class Game {
 				break;
 			case "i":
 				if(inventory.size()==0) {
-					System.out.println("You have nothing in your inventory.");
+					Game.print("You have nothing in your inventory.");
 					break;
 				}
 				else {
-					System.out.println("You are carrying: ");
+					Game.print("You are carrying: ");
 					for(Item item : inventory) {
-						System.out.println(item.getName());
+						Game.print(item.getName());
 					}
 					break;
 				}
@@ -189,51 +188,51 @@ public class Game {
 				currentRoom.getNPC(words[1]).talk();
 				break;
 			case "x":
-				System.out.println("Thanks for walking through my game!");
+				Game.print("Thanks for walking through my game!");
 				break;
 			default:
-				System.out.println("I dont know what that means. ");
+				Game.print("I dont know what that means. ");
 				break;
 			}
 	}
 	
 		/*Rooms currentRooms = World.buildWorld();
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move east!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move east!");
 		currentRooms = currentRooms.getExitnull('e');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move down!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move down!");
 		currentRooms = currentRooms.getExit('d');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move up!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move up!");
 		currentRooms = currentRooms.getExit('u');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move west!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move west!");
 		currentRooms = currentRooms.getExit('w');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move west!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move west!");
 		currentRooms = currentRooms.getExit('w');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move east!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move east!");
 		currentRooms = currentRooms.getExit('e');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move north!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move north!");
 		currentRooms = currentRooms.getExit('n');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move south!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move south!");
 		currentRooms = currentRooms.getExit('s');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move up!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move up!");
 		currentRooms = currentRooms.getExit('u');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move north!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move north!");
 		currentRooms = currentRooms.getExit('n');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move south!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move south!");
 		currentRooms = currentRooms.getExit('s');
-		System.out.println(currentRooms);
-		System.out.println("\nNow we'll move down!");
+		Game.print(currentRooms);
+		Game.print("\nNow we'll move down!");
 		currentRooms = currentRooms.getExit('d');
-		System.out.println(currentRooms);
+		Game.print(currentRooms);
 		*/
 }

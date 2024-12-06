@@ -35,8 +35,9 @@ public class Interface extends JFrame implements ActionListener{
 		panel.add(label);
 		panel.add(textfield);
 		panel.add(button);
-		add(textarea, BorderLayout.CENTER);
-		add(panel, BorderLayout.SOUTH);
+		JScrollPane pane = new JScrollPane(textarea);
+		add(pane, BorderLayout.CENTER);
+		add(panel, BorderLayout.SOUTH); 
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
