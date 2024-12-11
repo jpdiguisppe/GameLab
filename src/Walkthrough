@@ -1,0 +1,18 @@
+Starting in foyer, talk to joker.
+Take and use to audiorecorder.
+Go upstairs(u) to secondfloor.
+Take transportgate.
+Go north(n) to bedroom.
+Take combination.
+Go south(s) back to secondfloor.
+Go down(d) back to foyer.
+Go north(n) to bathroom.
+Take key.
+Go south(s) back to foyer.
+Go east(e) to study.
+Use key to unlock basement door.
+Go down(d) to basement.
+Open closet(autmatically uses combination and picks up alfred).
+Use transportgate to get back to the foyer.
+Prints a message telling you that you have won.
+You may press 'x' to end the playthough.
