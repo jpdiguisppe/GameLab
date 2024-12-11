@@ -1,11 +1,17 @@
-public class Closet extends Item{
-	public Closet(String name6, String desc6) {
-		super(name6, desc6);
+public class Closet extends Item {
+	public Closet(String name2, String desc2) {
+		super(name2, desc2);
 	}
 	public void open() {
-		Game.print("You have found Alfred, now hurry and escape!");
-		Item alfred = new Item("alfred", "The housekeeper of the mansion.");
-		Game.inventory.add(alfred);
+		if(Game.getInventory("combination")==null) {
+			Game.print("The closet is locked and you dont have the combination");
+		}
+		else {
+			Game.print("Using the combination, you open the closet and find the Alfred inside! Naturally, you pick Alfred up to escape.");
+			Item alfred = new Item("alfred", "The manisons butler");
+			Game.inventory.add(alfred);
+		}
+			
+		
 	}
-
 }

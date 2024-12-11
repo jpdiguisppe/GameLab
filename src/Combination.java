@@ -3,6 +3,6 @@ public class Combination extends Item {
 		super(name, desc);
 	}
 	public void use() {
-			Game.print("If you find a safe, try opening it!");
+			Game.print("If you find a closet, try opening it!");
 	}
 }

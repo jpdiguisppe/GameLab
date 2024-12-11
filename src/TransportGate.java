@@ -8,6 +8,7 @@ public class TransportGate extends Item{
 		}
 		else {
 			Game.print("Brace yourself, this will feel a little funny. NNNRRRRRRMMMMMMMMMMMM! \nNow get out of the house!");
+			Game.print("\n\nCongratulations, the game is over. You have won!/nPress 'x' to end current playthrough.");
 			Game.currentRoom = Game.currentRoom.getExit('u').getExit('w'); //trying to make current room the foyer
 			
 		}

@@ -1,7 +1,7 @@
 public class Joker extends NPC{
 	private int count = 1;
 	public Joker() {
-		super("Joker", "A famous comin book villain appears in the flesh.");
+		super("Joker", "A famous comic book villain appears in the flesh.");
 	}
 	public void talk() {
 		if(count == 1) {
@@ -34,7 +34,7 @@ public class Joker extends NPC{
 		if(count == 1) {
 			switch(option) {
 			case 1:
-				say("If you insist, hahahahaha, ill just wait here patiently...");
+				say("If you insist, hahahahaha, ill just wait here patiently...but perhaps pick up that audiorecorder");
 				break;
 		
 			case 2:
@@ -45,12 +45,12 @@ public class Joker extends NPC{
 		else if(count == 2) {
 			switch(option) {
 			case 1:
-				say("Im afraid you know as much as I do hahahahaha.");
+				say("Im afraid you know as much as I do hahahahaha. Have you listened to that audio recorder yet?");
 				Game.print("(The joker does a happy dance.)");
 				break;
 		
 			case 2:
-				say("That wont do you much good, now will it. Tik-Tok.");
+				say("That wont do you much good, now will it. Tik-Tok. That audiorecorder wont do much good if its too late.");
 				break;
 			}
 		}

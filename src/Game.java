@@ -119,7 +119,7 @@ public class Game {
 				else {
 					currentRoom.addItem(null, null);
 					inventory.add(i);
-					Game.print("You now posses " + i.getName());
+					Game.print("You now posses " + i.getName() + ". " + i.getDescription());
 				}
 				break;
 			case "look":
